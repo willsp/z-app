@@ -58,6 +58,17 @@
         <video src="http://video-js.zencoder.com/oceans-clip.mp4" id="ocean-vid"></video>
     </div>
 
+    <script type="text/template">
+        <li class="{{featured}}">
+            <img alt="{{img.alt}}" src="{{img.src}}" />
+            <div class="contents">
+                <h2>{{title}}</h2>
+                <time datetime="{{time.datetime}}">{{time.text}}</time>
+            </div>
+        </li>
+    </script>
+
+    <script src="scripts/lib/renderTemplate.js" type="text/javascript"></script>
     <script src="scripts/lib/LinkedList.js" type="text/javascript"></script>
     <script src="scripts/model.js" type="text/javascript"></script>
     <script src="scripts/controller.js" type="text/javascript"></script>

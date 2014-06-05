@@ -1,18 +1,30 @@
-/*global describe, it, expect, afterEach, beforeEach, readElement*/
+/*global describe, expect, it, beforeEach, afterEach, Item*/
 
-describe('readElement', function() {
+describe('Item', function() {
     'use strict';
 
+    var title = 'Title of Item';
+    var imgSrc = 'img.jpg';
+    var imgAlt = 'alt text';
+    var timeDatetime = '2014-05-31';
+    var timeText = 'May 31, 2015';
+
     it('is defined', function() {
-        expect(readElement).toBeDefined();
+        expect(Item).toBeDefined();
     });
 
-    describe('loads the passed element and', function() {
-        var title = 'Title of Item';
-        var imgSrc = 'img.jpg';
-        var imgAlt = 'alt text';
-        var timeDatetime = '2014-05-31';
-        var timeText = 'May 31, 2015';
+    it('defaults all properties to empty strings', function() {
+        var target = new Item();
+
+        expect(target.featured).toBe(false);
+        expect(target.title).toEqual('');
+        expect(target.img.src).toEqual('');
+        expect(target.img.alt).toEqual('');
+        expect(target.time.datetime).toEqual('');
+        expect(target.time.text).toEqual('');
+    });
+
+    describe('.fromElement()', function() {
         var el;
 
         var createElement = function() {
@@ -48,35 +60,47 @@ describe('readElement', function() {
         afterEach(function() {
             el = undefined;
         });
+        
+        it('is defined', function() {
+            expect(Item.fromElement).toBeDefined();
+        });
 
-        it('sets title property of output object to .contents>h2', function() {
-            var target = readElement(el);
+        it('sets title property of output Item to .contents>h2', function() {
+            var target = Item.fromElement(el);
 
             expect(target.title).toEqual(title);
         });
 
         it('sets img.src property of output object to img[src]', function() {
-            var target = readElement(el);
+            var target = Item.fromElement(el);
 
             expect(target.img.src).toEqual(imgSrc);
         });
 
         it('sets img.alt property of output object to img[alt]', function() {
-            var target = readElement(el);
+            var target = Item.fromElement(el);
 
             expect(target.img.alt).toEqual(imgAlt);
         });
 
         it('sets time.datetime property of output object to time[datetime]', function() {
-            var target = readElement(el);
+            var target = Item.fromElement(el);
 
             expect(target.time.datetime).toEqual(timeDatetime);
         });
 
         it('sets time.text property of output object to time text content', function() {
-            var target = readElement(el);
+            var target = Item.fromElement(el);
 
             expect(target.time.text).toEqual(timeText);
+        });
+
+        it('sets featured property to true when a featured class is present on element', function() {
+            el.setAttribute('class', 'featured');
+
+            var target = Item.fromElement(el);
+
+            expect(target.featured).toBe(true);
         });
     });
 });
