@@ -9,15 +9,4 @@
         }
     }
 
-    Controller.prototype.loadModel = function(opts) {
-        var source = opts.source;
-        var app = this.app;
-        var model = this.model;
-
-        
-    };
-
-    app.controller = new Controller({
-        app: app
-    });
 }(window));

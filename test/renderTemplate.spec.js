@@ -33,5 +33,20 @@ describe('renderTemplate()', function() {
 
         expect(renderTemplate(template, data)).toEqual(expected);
     });
+
+    it('executes functions passed', function() {
+        var data = {
+            fullName: function() {
+                return 'Phil Wills';
+            }
+        };
+
+        var template = '{{fullName}} is motivated.';
+        var expected = 'Phil Wills is motivated.';
+
+        var value = renderTemplate(template, data);
+
+        expect(value).toEqual(expected);
+    });
 });
 

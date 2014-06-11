@@ -58,7 +58,7 @@ module.exports = function (grunt) {
             },
             unit: {
                 options: {
-                    browsers: ['PhantomJS'],
+                    browsers: ['Chrome'],
                     files: '<%= jshint.lib_test.src %>',
                     frameworks: ['jasmine'],
                     reporters: 'dots'

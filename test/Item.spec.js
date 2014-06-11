@@ -6,8 +6,8 @@ describe('Item', function() {
     var title = 'Title of Item';
     var imgSrc = 'img.jpg';
     var imgAlt = 'alt text';
-    var timeDatetime = '2014-05-31';
-    var timeText = 'May 31, 2015';
+    var timeDatetime = '2014-05-31T07:00:00.000Z';
+    var timeText = 'May 31, 2014';
 
     it('is defined', function() {
         expect(Item).toBeDefined();
@@ -20,8 +20,21 @@ describe('Item', function() {
         expect(target.title).toEqual('');
         expect(target.img.src).toEqual('');
         expect(target.img.alt).toEqual('');
-        expect(target.time.datetime).toEqual('');
-        expect(target.time.text).toEqual('');
+        expect(target.published).toBe(null);
+    });
+
+    it('returns the properly formatted string for publishedText()', function() {
+        var target = new Item();
+        target.published = new Date(timeText);
+
+        expect(target.publishedText()).toEqual(timeText);
+    });
+
+    it('returns the ISO formatted date string for publishedISO()', function() {
+        var target = new Item();
+        target.published = new Date(timeText);
+
+        expect(target.publishedISO()).toEqual(timeDatetime);
     });
 
     describe('.fromElement()', function() {
@@ -83,16 +96,11 @@ describe('Item', function() {
             expect(target.img.alt).toEqual(imgAlt);
         });
 
-        it('sets time.datetime property of output object to time[datetime]', function() {
+        it('sets published property of output object to date from time[datetime]', function() {
             var target = Item.fromElement(el);
+            var expected = new Date(timeDatetime);
 
-            expect(target.time.datetime).toEqual(timeDatetime);
-        });
-
-        it('sets time.text property of output object to time text content', function() {
-            var target = Item.fromElement(el);
-
-            expect(target.time.text).toEqual(timeText);
+            expect(target.published).toEqual(expected);
         });
 
         it('sets featured property to true when a featured class is present on element', function() {
