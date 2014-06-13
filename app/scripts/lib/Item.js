@@ -1,42 +1,46 @@
 (function(global) {
     'use strict';
 
-    var Item = function() {};
+    var Item = function() {
+        var me = this;
 
-    Item.prototype = {
-        featured: false,
-        title: '',
-        published: null,
-        img: {
+        this.img = {
             src: '',
             alt: ''
-        },
-        publishedText: function() {
-            var pub = this.published;
+        };
+
+        // These need to be here, otherwise,
+        // they don't get picked up as hasOwn...
+        this.publishedText = function() {
+            var pub = me.published;
 
             return months[pub.getMonth()] + 
                 ' ' + pub.getDate() + 
                 ', ' + pub.getFullYear();
-         },
-         publishedISO: function() {
-             return this.published.toISOString();
-         }
+         };
+
+         this.publishedISO = function() {
+             return me.published.toISOString();
+         };
     };
 
-    Item.fromElement = function(element) {
-        var item = new Item();
+    Item.prototype = {
+        featured: '',
+        title: '',
+        published: null
+    };
+
+    Item.prototype.fromElement = function(element) {
         var h2 = element.getElementsByTagName('h2')[0];
         var img = element.getElementsByTagName('img')[0];
         var date = element.getElementsByTagName('time')[0];
-        var elClass = element.getAttribute('class');
+        var featured = element.classList.contains('featured');
 
-        item.title = h2.textContent;
-        item.img.src = img.getAttribute('src');
-        item.img.alt = img.getAttribute('alt');
-        item.featured = elClass && elClass.indexOf('featured') > -1;
-        item.published = new Date(date.getAttribute('datetime'));
-
-        return item;
+        this.title = h2.textContent;
+        this.img.src = img.getAttribute('src');
+        this.img.alt = img.getAttribute('alt');
+        this.featured = featured ? 'featured' : '';
+        this.published = new Date(date.getAttribute('datetime'));
     };
 
     var months = [

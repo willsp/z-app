@@ -24,7 +24,9 @@ h2 {
   margin: 0 0 10px;
 }
 ul {
+  height: 840px;
   margin-top: 60px;
+  overflow: auto;
   padding: 0;
 }
 li {

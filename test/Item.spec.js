@@ -16,7 +16,7 @@ describe('Item', function() {
     it('defaults all properties to empty strings', function() {
         var target = new Item();
 
-        expect(target.featured).toBe(false);
+        expect(target.featured).toEqual('');
         expect(target.title).toEqual('');
         expect(target.img.src).toEqual('');
         expect(target.img.alt).toEqual('');
@@ -75,40 +75,47 @@ describe('Item', function() {
         });
         
         it('is defined', function() {
-            expect(Item.fromElement).toBeDefined();
+            var target = new Item();
+
+            expect(target.fromElement).toBeDefined();
         });
 
         it('sets title property of output Item to .contents>h2', function() {
-            var target = Item.fromElement(el);
+            var target = new Item();
+            target.fromElement(el);
 
             expect(target.title).toEqual(title);
         });
 
         it('sets img.src property of output object to img[src]', function() {
-            var target = Item.fromElement(el);
+            var target = new Item();
+            target.fromElement(el);
 
             expect(target.img.src).toEqual(imgSrc);
         });
 
         it('sets img.alt property of output object to img[alt]', function() {
-            var target = Item.fromElement(el);
+            var target = new Item();
+            target.fromElement(el);
 
             expect(target.img.alt).toEqual(imgAlt);
         });
 
         it('sets published property of output object to date from time[datetime]', function() {
-            var target = Item.fromElement(el);
+            var target = new Item();
+            target.fromElement(el);
             var expected = new Date(timeDatetime);
 
             expect(target.published).toEqual(expected);
         });
 
-        it('sets featured property to true when a featured class is present on element', function() {
+        it('sets featured property to featured when a featured class is present on element', function() {
             el.setAttribute('class', 'featured');
 
-            var target = Item.fromElement(el);
+            var target = new Item();
+            target.fromElement(el);
 
-            expect(target.featured).toBe(true);
+            expect(target.featured).toEqual('featured');
         });
     });
 });

@@ -9,7 +9,7 @@
     <h1>Phil Wills Z App</h1>
 
     <!-- Main Content -->
-    <ul>
+    <ul id="scroller">
         <li class="featured">
             <img alt="TODO" src="images/big.jpg">
             <div class="contents">
@@ -58,18 +58,20 @@
         <video src="http://video-js.zencoder.com/oceans-clip.mp4" id="ocean-vid"></video>
     </div>
 
-    <script type="text/template">
+    <script id="itemTemplate" type="text/template">
         <li class="{{featured}}">
             <img alt="{{img.alt}}" src="{{img.src}}" />
             <div class="contents">
                 <h2>{{title}}</h2>
-                <time datetime="{{time.datetime}}">{{time.text}}</time>
+                <time datetime="{{publishedISO}}">{{publishedText}}</time>
             </div>
         </li>
     </script>
 
     <script src="scripts/lib/renderTemplate.js" type="text/javascript"></script>
+    <script src="scripts/lib/Item.js" type="text/javascript"></script>
     <script src="scripts/lib/LinkedList.js" type="text/javascript"></script>
+    <script src="scripts/lib/ContinuousScrollCtrl.js" type="text/javascript"></script>
     <script src="scripts/controller.js" type="text/javascript"></script>
 </body>
 </html>

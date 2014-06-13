@@ -1,12 +1,19 @@
-(function(global) {
+/*global Item, ContinuousScrollCtrl*/
+
+(function() {
     'use strict';
 
-    var app = global.app = global.app || {};
+    var container = document.getElementById('scroller');
+    var template = document.getElementById('itemTemplate').textContent;
 
-    function Controller(init) {
-        if (init && init.app) {
-            this.app = init.app;
-        }
-    }
+    var opts = {
+        model: Item,
+        container: container,
+        template: template,
+        loadModel: Item.prototype.fromElement
+    };
 
-}(window));
+    var scrollCtrl = new ContinuousScrollCtrl(opts);
+    scrollCtrl.init();
+
+}());

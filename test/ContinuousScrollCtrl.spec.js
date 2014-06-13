@@ -1,4 +1,4 @@
-/*global describe, expect, it, xit, beforeEach, afterEach, ContinuousScrollCtrl*/
+/*global describe, expect, it, beforeEach, ContinuousScrollCtrl*/
 
 describe('ContinuousScrollCtrl', function() {
     'use strict';
@@ -17,6 +17,7 @@ describe('ContinuousScrollCtrl', function() {
             ul.appendChild(li);
         }
 
+        ul.setAttribute('style', 'height: 300px; overflow: auto');
         document.body.appendChild(ul);
         return ul;
     };
@@ -73,39 +74,39 @@ describe('ContinuousScrollCtrl', function() {
             target = new ContinuousScrollCtrl(options);
         });
 
-        afterEach(function() {
-            document.body.removeChild(element);
-        });
-
-        // Need to rework this work with phantom... testing in other browsers is too slow.
-        xit('loads a linked list with the DOM children', function() {
-            target.init();
-
-            var first = target.list.first;
-            expect(first.data.title).toEqual(element.children[0].textContent);
-            expect(first.next.data.title).toEqual(element.children[1].textContent);
-            expect(target.list.last.data.title).toBe(element.children[4].textContent);
-        });
-
-        xit('adds elements to the container until page is full', function() {
+        it('adds elements to the container until page is full', function() {
             target.init();
 
             expect(element.children.length > 5).toBe(true);
         });
 
-        xit('adds elements according to the original list', function() {
+        it('adds elements according to the original list', function() {
             target.init();
 
             expect(element.children[5].textContent).toEqual(element.children[0].textContent);
             expect(element.children[6].textContent).toEqual(element.children[1].textContent);
         });
 
-        xit('adds elements to the bottom of the list when scrolling down', function() {
+        it('adds elements to the bottom of the list when scrolling down', function() {
             target.init();
 
-            var beginHeight = window.innerHeight;
-            window.scrollBy(0, element.children[0].offsetHeight * 2);
-            var endHeight = window.innerHeight;
+            var beginHeight = element.scrollHeight;
+            element.scrollByLines(10);
+            target.check(); // scroll event not firing... ugh
+            var endHeight = element.scrollHeight;
+
+            expect((endHeight - beginHeight) > 0).toBe(true);
+        });
+
+        it('adds elements to the top of the list when scrolling up', function() {
+            target.init();
+
+            element.scrollByLines(10);
+            target.check(); // scroll event not firing... ugh
+            var beginHeight = element.scrollHeight;
+            element.scrollByLines(-10);
+            target.check(); // scroll event not firing... ugh
+            var endHeight = element.scrollHeight;
 
             expect((endHeight - beginHeight) > 0).toBe(true);
         });
