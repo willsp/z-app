@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Phil Wills' Zumobi Web App</title>
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
+</head>
+<body>
+    <h1>Phil Wills Z App</h1>
+
+    <!-- Main Content -->
+    <ul id="scroller">
+        <li class="featured">
+            <img alt="TODO" src="images/big.jpg">
+            <div class="contents">
+                <h2>Written with Fully Semantic HTML</h2>
+                <time datetime="2014-05-31T07:00:00.000Z">May 31, 2014</time>
+            </div>
+        </li>
+        <li>
+            <img alt="TODO" src="images/small.jpg">
+            <div class="contents">
+                <h2>Slide 2</h2>
+                <time datetime="2014-05-31T07:00:00.000Z">May 31, 2014</time>
+            </div>
+        </li>
+        <li>
+            <img alt="TODO" src="images/small.jpg">
+            <div class="contents">
+                <h2>Slide 3</h2>
+                <time datetime="2014-05-31T07:00:00.000Z">May 31, 2014</time>
+            </div>
+        </li>
+        <li>
+            <img alt="TODO" src="images/small.jpg">
+            <div class="contents">
+                <h2>Slide 4</h2>
+                <time datetime="2014-05-31T07:00:00.000Z">May 31, 2014</time>
+            </div>
+        </li>
+        <li>
+            <img alt="TODO" src="images/small.jpg">
+            <div class="contents">
+                <h2>Slide 5</h2>
+                <time datetime="2014-05-31T07:00:00.000Z">May 31, 2014</time>
+            </div>
+        </li>
+        <li>
+            <img alt="TODO" src="images/small.jpg">
+            <div class="contents">
+                <h2>Slide 6</h2>
+                <time datetime="2014-05-31T07:00:00.000Z">May 31, 2014</time>
+            </div>
+        </li>
+        <li>
+            <img alt="TODO" src="images/small.jpg">
+            <div class="contents">
+                <h2>Slide 7</h2>
+                <time datetime="2014-05-31T07:00:00.000Z">May 31, 2014</time>
+            </div>
+        </li>
+        <li>
+            <img alt="TODO" src="images/small.jpg">
+            <div class="contents">
+                <h2>Slide 8</h2>
+                <time datetime="2014-05-31T07:00:00.000Z">May 31, 2014</time>
+            </div>
+        </li>
+        <li>
+            <img alt="TODO" src="images/small.jpg">
+            <div class="contents">
+                <h2>Slide 9</h2>
+                <time datetime="2014-05-31T07:00:00.000Z">May 31, 2014</time>
+            </div>
+        </li>
+        <li>
+            <img alt="TODO" src="images/small.jpg">
+            <div class="contents">
+                <h2>Slide 10</h2>
+                <time datetime="2014-05-31T07:00:00.000Z">May 31, 2014</time>
+            </div>
+        </li>
+        <li>
+            <img alt="TODO" src="images/small.jpg">
+            <div class="contents">
+                <h2>Slide 11</h2>
+                <time datetime="2014-05-31T07:00:00.000Z">May 31, 2014</time>
+            </div>
+        </li>
+        <li>
+            <img alt="TODO" src="images/small.jpg">
+            <div class="contents">
+                <h2>Slide 12</h2>
+                <time datetime="2014-05-31T07:00:00.000Z">May 31, 2014</time>
+            </div>
+        </li>
+        <li>
+            <img alt="TODO" src="images/small.jpg">
+            <div class="contents">
+                <h2>Slide 13</h2>
+                <time datetime="2014-05-31T07:00:00.000Z">May 31, 2014</time>
+            </div>
+        </li>
+    </ul>
+
+    <ul id="videoInsert">
+        <li class="video">
+            <video src="http://video-js.zencoder.com/oceans-clip.mp4"></video>
+        </li>
+    </ul>
+
+    <script id="itemTemplate" type="text/template">
+        <li class="{{featured}}">
+            <img alt="{{img.alt}}" src="{{img.src}}" />
+            <div class="contents">
+                <h2>{{title}}</h2>
+                <time datetime="{{publishedISO}}">{{publishedText}}</time>
+            </div>
+        </li>
+    </script>
+
+    <script src="scripts/lib/renderTemplate.js" type="text/javascript"></script>
+    <script src="scripts/lib/Item.js" type="text/javascript"></script>
+    <script src="scripts/lib/LinkedList.js" type="text/javascript"></script>
+    <script src="scripts/lib/ContinuousScrollCtrl.js" type="text/javascript"></script>
+    <script src="scripts/controller.js" type="text/javascript"></script>
+</body>
+</html>
