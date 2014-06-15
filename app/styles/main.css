@@ -24,7 +24,7 @@ h2 {
   margin: 0 0 10px;
 }
 ul {
-  height: 840px;
+  height: 400px;
   margin-top: 60px;
   overflow: auto;
   padding: 0;
@@ -32,6 +32,7 @@ ul {
 li {
   height: 140px;
   list-style: none;
+  overflow: hidden;
   position: relative;
 }
 li:after {
@@ -46,6 +47,15 @@ li:after {
   background: -o-linear-gradient(bottom, #000000, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0));
   background: linear-gradient(to top, #000000, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0));
 }
+.video {
+  text-align: center;
+}
+.video:after {
+  content: none;
+}
+.video video {
+  max-height: 100%;
+}
 .featured {
   height: 240px;
 }
@@ -57,7 +67,4 @@ li:after {
   padding: 20px;
   position: absolute;
   z-index: 5;
-}
-.videoInsert {
-  display: none;
 }

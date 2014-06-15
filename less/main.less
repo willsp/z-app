@@ -37,7 +37,7 @@ h2 {
 }
 
 ul {
-    height: 840px;
+    height: 400px;
     margin-top: 60px;
     overflow: auto;
     padding: 0;
@@ -46,6 +46,7 @@ ul {
 li {
     height: 140px;
     list-style: none;
+    overflow: hidden;
     position: relative;
 
     &:after {
@@ -56,6 +57,18 @@ li {
         left: 0;
         right: 0;
         .gradient-up(rgba(0,0,0,1), rgba(0,0,0,.5) 30%, rgba(0,0,0,0));
+    }
+}
+
+.video {
+    text-align: center;
+
+    &:after {
+        content: none;
+    }
+
+    video {
+        max-height: 100%;
     }
 }
 
@@ -72,9 +85,5 @@ li {
     padding: 20px;
     position: absolute;
     z-index: 5;
-}
-
-.videoInsert {
-    display: none;
 }
 
