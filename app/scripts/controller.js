@@ -7,14 +7,21 @@
     var template = document.getElementById('itemTemplate').textContent;
     var videoContainer = document.getElementById('videoInsert');
     var videoInsert = videoContainer.children[0];
+    var video = document.getElementById('video');
+
+    // Set maximum height for the scroller
+    var maxHeight = window.innerHeight - 60 + 'px';
+    container.setAttribute('style', 'max-height: ' + maxHeight);
+
+    // Don't display the video in it's original spot, hiding it here
+    // so it still shows if js is disabled.
     videoContainer.setAttribute('style', 'display: none;');
 
     var playPauseVideo = function() {
-        var video, videoLi;
+        var videoLi;
         var vids = this.getElementsByClassName('video');
         for (var i = 0, max = vids.length; i < max; i++) {
             videoLi = vids[i];
-            video = videoLi.children[0];
 
             if (videoLi.offsetTop >= container.scrollTop &&
                 videoLi.offsetTop < container.scrollTop + container.offsetHeight) {
@@ -34,7 +41,7 @@
         container: container,
         template: template,
         loadModel: Item.prototype.fromElement,
-        buffer: 300,
+        buffer: 100,
         numVisible: 6,
         shiv: {
             element: videoInsert,

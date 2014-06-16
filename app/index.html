@@ -106,7 +106,11 @@
 
     <ul id="videoInsert">
         <li class="video">
-            <video src="http://video-js.zencoder.com/oceans-clip.mp4"></video>
+            <video id="video" preload="none" webkit-playsinline>
+                <source id="webm" src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm">
+                <source id="mp4" src="http://video-js.zencoder.com/oceans-clip.mp4" type="video/mp4">
+                <source id="ogv" src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogv">
+            </video>
         </li>
     </ul>
 
