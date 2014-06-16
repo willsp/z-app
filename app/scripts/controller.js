@@ -35,9 +35,8 @@
     };
 
     container.addEventListener('scroll', playPauseVideo);
-    var buffer = document.body.offsetWidth / 4;
 
-    console.log(buffer);
+    var buffer = document.body.offsetWidth / 3;
 
     var opts = {
         model: Item,
