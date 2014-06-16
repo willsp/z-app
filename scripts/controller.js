@@ -6,8 +6,8 @@
     var container = document.getElementById('scroller');
     var template = document.getElementById('itemTemplate').textContent;
     var videoContainer = document.getElementById('videoInsert');
-    var videoInsert = videoContainer.removeChild(videoContainer.children[0]);
-    videoContainer.parentNode.removeChild(videoContainer);
+    var videoInsert = videoContainer.children[0];
+    videoContainer.setAttribute('style', 'display: none;');
 
     var playPauseVideo = function() {
         var video, videoLi;
@@ -34,14 +34,15 @@
         container: container,
         template: template,
         loadModel: Item.prototype.fromElement,
-        buffer: 250,
+        buffer: 300,
         numVisible: 6,
         shiv: {
             element: videoInsert,
             position: function(position) {
                 // 9n + 4 (not including video element in count)
                 return (position - 4) % 9 === 0;
-            }
+            },
+            noclone: true
         }
     };
 
