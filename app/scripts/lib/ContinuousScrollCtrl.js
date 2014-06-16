@@ -168,9 +168,14 @@
     ContinuousScrollCtrl.prototype.doShiv = function(position, nextElement) {
         var shiv = this.shiv;
         var container = this.container;
+        var toInsert;
 
         if (typeof(shiv.position) === 'function' && shiv.position(position)) {
-            var toInsert = shiv.element.cloneNode(true);
+            if (shiv.noclone) {
+                toInsert = shiv.element;
+            } else {
+                toInsert = shiv.element.cloneNode(true);
+            }
             if (nextElement) {
                 container.insertBefore(toInsert, nextElement);
             } else {

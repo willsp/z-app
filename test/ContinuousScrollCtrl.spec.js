@@ -321,6 +321,34 @@ describe('ContinuousScrollCtrl', function() {
 
             expect(element.children.length).toEqual(options.numVisible);
         });
+
+        it('uses the actual element (not a clone), if shiv.noclone is true', function() {
+            element = createEl(30);
+            element.setAttribute('style', 'height: 35px; overflow: auto');
+
+            options.container = element;
+            options.shiv = {
+                element: inserted,
+                position: function(position) {
+                    // 8n + 4
+                    return (position - 4) % 8 === 0;
+                },
+                noclone: true
+            };
+            options.numVisible = 5;
+
+            target = new ContinuousScrollCtrl(options);
+            target.init();
+
+            expect(element.children[4]).toBe(inserted);
+
+            for (var i = 0, scroll = 8; i < scroll; i++) {
+                element.scrollByLines(30);
+                target.check();
+            }
+
+            expect(element.children[4]).toEqual(inserted);
+        });
     });
 });
 
