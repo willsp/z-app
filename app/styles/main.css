@@ -7,7 +7,7 @@ body {
   font-family: Helvetica, sans-serif;
   font-size: 12px;
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 1200px;
   width: 100%;
 }
 h1 {
@@ -32,7 +32,14 @@ li {
   position: relative;
 }
 li img {
+  position: absolute;
+  top: 0;
   width: 100%;
+}
+li:before {
+  content: '';
+  display: block;
+  margin-top: 43.75%;
 }
 li:after {
   content: '';
@@ -49,14 +56,20 @@ li:after {
 .video {
   text-align: center;
 }
+.video:before {
+  content: none;
+}
 .video:after {
-  background: none;
+  content: none;
 }
 .video video {
   max-width: 100%;
 }
 .featured h2 {
   font-size: 2em;
+}
+.featured:before {
+  margin-top: 75%;
 }
 .contents {
   bottom: 0;

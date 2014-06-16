@@ -17,7 +17,7 @@ body {
     font-family: Helvetica, sans-serif;
     font-size: 12px;
     margin: 0 auto;
-    max-width: 700px;
+    max-width: 1200px;
     width: 100%;
 }
 
@@ -46,7 +46,15 @@ li {
     position: relative;
 
     img {
+        position: absolute;
+        top: 0;
         width: 100%;
+    }
+
+    &:before {
+        content: '';
+        display: block;
+        margin-top: percentage(140 / 320);
     }
 
     &:after {
@@ -63,8 +71,12 @@ li {
 .video {
     text-align: center;
 
+    &:before {
+        content: none;
+    }
+
     &:after {
-        background: none;
+        content: none;
     }
 
     video {
@@ -75,6 +87,10 @@ li {
 .featured {
     h2 {
         font-size: 2em;
+    }
+
+    &:before {
+        margin-top: percentage(240 / 320);
     }
 }
 
