@@ -10,8 +10,8 @@
     var video = document.getElementById('video');
 
     // Set maximum height for the scroller
-    var maxHeight = window.innerHeight - 60 + 'px';
-    container.setAttribute('style', 'max-height: ' + maxHeight);
+    var height = window.innerHeight - 60 + 'px';
+    container.setAttribute('style', 'height: ' + height);
 
     // Don't display the video in it's original spot, hiding it here
     // so it still shows if js is disabled.

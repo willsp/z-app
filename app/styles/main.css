@@ -23,6 +23,7 @@ h2 {
 }
 ul {
   margin: 0;
+  max-height: 700px;
   overflow: auto;
   padding: 0;
 }
