@@ -2,6 +2,8 @@
 
 A simple webapp to make a list continuously scroll in either direction... no plugins or libraries allowed.
 
+To run this full width, up to 1200 pixels, switch to "var-width" branch.
+
 ## To Install
 
 Be sure to have [nodejs][1] and [grunt-cli][2] installed.
