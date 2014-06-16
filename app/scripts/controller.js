@@ -35,13 +35,16 @@
     };
 
     container.addEventListener('scroll', playPauseVideo);
+    var buffer = document.body.offsetWidth / 4;
+
+    console.log(buffer);
 
     var opts = {
         model: Item,
         container: container,
         template: template,
         loadModel: Item.prototype.fromElement,
-        buffer: 100,
+        buffer: buffer,
         numVisible: 6,
         shiv: {
             element: videoInsert,

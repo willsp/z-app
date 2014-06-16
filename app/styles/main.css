@@ -7,8 +7,8 @@ body {
   font-family: Helvetica, sans-serif;
   font-size: 12px;
   margin: 0 auto;
-  max-width: 100%;
-  width: 320px;
+  max-width: 700px;
+  width: 100%;
 }
 h1 {
   background-color: #000000;
@@ -22,16 +22,17 @@ h2 {
   margin: 0 0 10px;
 }
 ul {
-  height: 420px;
   margin: 0;
   overflow: auto;
   padding: 0;
 }
 li {
-  height: 140px;
   list-style: none;
   overflow: hidden;
   position: relative;
+}
+li img {
+  width: 100%;
 }
 li:after {
   content: '';
@@ -49,13 +50,10 @@ li:after {
   text-align: center;
 }
 .video:after {
-  content: none;
+  background: none;
 }
 .video video {
-  max-height: 100%;
-}
-.featured {
-  height: 240px;
+  max-width: 100%;
 }
 .featured h2 {
   font-size: 2em;

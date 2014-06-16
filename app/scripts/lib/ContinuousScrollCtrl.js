@@ -109,13 +109,15 @@
         var el = this.container;
         var children = el.children;
         var buffer = this.buffer;
+        var st;
 
         while (el.scrollTop < buffer) {
+            st = el.scrollTop;
             if (!this.doShiv(--this.topPosition, children[0])) {
                 this.top = this.top.previous;
                 el.insertAdjacentHTML('afterbegin', renderTemplate(this.template, this.top.data));
             }
-            el.scrollTop = el.scrollTop + children[0].offsetHeight; 
+            el.scrollTop = st + children[0].offsetHeight; 
             this.lastScrollTop = el.scrollTop;
 
             if (this.numVisible) {
@@ -153,9 +155,10 @@
         var el = this.container;
         var children = el.children;
         var height = children[0].offsetHeight;
+        var st = el.scrollTop;
 
         var removed = el.removeChild(children[0]);
-        el.scrollTop = el.scrollTop - height;
+        el.scrollTop = st - height;
         this.lastScrollTop = el.scrollTop;
 
         if (!removed.classList.contains('shiv')) {

@@ -17,8 +17,8 @@ body {
     font-family: Helvetica, sans-serif;
     font-size: 12px;
     margin: 0 auto;
-    max-width: 100%;
-    width: 320px;
+    max-width: 700px;
+    width: 100%;
 }
 
 h1 {
@@ -35,17 +35,19 @@ h2 {
 }
 
 ul {
-    height: 420px;
     margin: 0;
     overflow: auto;
     padding: 0;
 }
 
 li {
-    height: 140px;
     list-style: none;
     overflow: hidden;
     position: relative;
+
+    img {
+        width: 100%;
+    }
 
     &:after {
         content: '';
@@ -62,17 +64,15 @@ li {
     text-align: center;
 
     &:after {
-        content: none;
+        background: none;
     }
 
     video {
-        max-height: 100%;
+        max-width: 100%;
     }
 }
 
 .featured {
-    height: 240px;
-
     h2 {
         font-size: 2em;
     }
