@@ -6,16 +6,19 @@
     var container = document.getElementById('scroller');
     var template = document.getElementById('itemTemplate').textContent;
 
+    // Generate the video element to shiv in.
     var videoInsert = document.createElement('li');
-    videoInsert.setAttribute('class', 'video');
     var video = document.createElement('video');
     var webm = document.createElement('source');
+    var mp4 = document.createElement('source');
+    var ogv = document.createElement('source');
+
+    videoInsert.setAttribute('class', 'video');
+
     webm.setAttribute('src', 'http://video-js.zencoder.com/oceans-clip.webm');
     webm.setAttribute('type', 'video/webm');
-    var mp4 = document.createElement('source');
     mp4.setAttribute('src', 'http://video-js.zencoder.com/oceans-clip.mp4');
     mp4.setAttribute('type', 'video/mp4');
-    var ogv = document.createElement('source');
     ogv.setAttribute('src', 'http://video-js.zencoder.com/oceans-clip.ogv');
     ogv.setAttribute('type', 'video/ogv');
 
@@ -24,7 +27,7 @@
     video.appendChild(ogv);
     videoInsert.appendChild(video);
 
-    // Set maximum height for the scroller
+    // Set height for the scroller to the height of the window - header
     var height = window.innerHeight - 60 + 'px';
     container.setAttribute('style', 'height: ' + height);
 
