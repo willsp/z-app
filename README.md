@@ -13,5 +13,9 @@ Be sure to have [nodejs][1] and [grunt-cli][2] installed.
     npm install
     grunt serve
 
+Got the video playing on mobile... however, still can't figure how to get it to play inline on the iPhone.
+This makes for a very poor experience... pretty much unusable. Will need to figure that out or reimplement
+to only play through, once.
+
 [1]: http://nodejs.org/
 [2]: http://gruntjs.com/
