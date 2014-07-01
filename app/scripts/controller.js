@@ -14,16 +14,18 @@
     var ogv = document.createElement('source');
 
     videoInsert.setAttribute('class', 'video');
+    video.id = 'oceanvid';
+    video.setAttribute('preload', 'none');
 
-    webm.setAttribute('src', 'http://video-js.zencoder.com/oceans-clip.webm');
-    webm.setAttribute('type', 'video/webm');
     mp4.setAttribute('src', 'http://video-js.zencoder.com/oceans-clip.mp4');
     mp4.setAttribute('type', 'video/mp4');
+    webm.setAttribute('src', 'http://video-js.zencoder.com/oceans-clip.webm');
+    webm.setAttribute('type', 'video/webm');
     ogv.setAttribute('src', 'http://video-js.zencoder.com/oceans-clip.ogv');
     ogv.setAttribute('type', 'video/ogv');
 
-    video.appendChild(webm);
     video.appendChild(mp4);
+    video.appendChild(webm);
     video.appendChild(ogv);
     videoInsert.appendChild(video);
 
@@ -39,6 +41,9 @@
 
             if (videoLi.offsetTop >= container.scrollTop &&
                 videoLi.offsetTop < container.scrollTop + container.offsetHeight) {
+                if (video.readyState === 0) {
+                    video.load();
+                }
                 if (video.paused) {
                     video.play();
                 }
@@ -49,6 +54,7 @@
     };
 
     container.addEventListener('scroll', playPauseVideo);
+    container.addEventListener('touchmove', playPauseVideo);
 
     var opts = {
         model: Item,
