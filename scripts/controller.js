@@ -14,7 +14,6 @@
     var ogv = document.createElement('source');
 
     videoInsert.setAttribute('class', 'video');
-    video.id = 'oceanvid';
     video.setAttribute('preload', 'none');
 
     mp4.setAttribute('src', 'http://video-js.zencoder.com/oceans-clip.mp4');
@@ -53,8 +52,13 @@
         }
     };
 
-    container.addEventListener('scroll', playPauseVideo);
-    container.addEventListener('touchmove', playPauseVideo);
+    // Mobile needs a touch event in the stack to play/pause (well certainly play)
+    // Still can't get the video to play inline on an iPhone, though... arggg
+    if ('ontouchstart' in document.documentElement) {
+        container.addEventListener('touchmove', playPauseVideo);
+    } else {
+        container.addEventListener('scroll', playPauseVideo);
+    }
 
     var opts = {
         model: Item,
